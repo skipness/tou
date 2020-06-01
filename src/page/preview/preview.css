@@ -1,0 +1,18 @@
+.code-container {
+  @apply flex flex-col mb-4;
+  & > p {
+    @apply items-end text-sm;
+  }
+  & > input {
+    @apply bg-lightgrey p-1 rounded text-black;
+  }
+  & > input:focus {
+    @apply outline-none;
+  }
+  & > input:hover {
+    @apply bg-gray-100;
+  }
+  & > input::selection {
+    @apply bg-gold;
+  }
+}

@@ -1,0 +1,11 @@
+.dropzone {
+  border-width: 0.15rem;
+}
+
+/* p {
+  @apply items-center h-12 flex m-0;
+} */
+
+small {
+  color: #a8a8a8;
+}

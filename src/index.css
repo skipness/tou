@@ -1,0 +1,16 @@
+@import 'tailwindcss/base';
+
+html {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+  @apply bg-black m-0;
+  & > #root {
+    @apply flex flex-col h-screen justify-center text-lightgrey;
+  }
+}
+
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Source+Sans+Pro:wght@400;500&display=swap');
