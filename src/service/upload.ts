@@ -1,6 +1,6 @@
-export default async (file: File) => {
+export default async (files: File[]) => {
   const formData = new FormData();
-  formData.append('image', file);
+  files.forEach((file: File) => formData.append('image', file));
   return await fetch('https://api.tou.im/upload', {
     method: 'POST',
     body: formData,

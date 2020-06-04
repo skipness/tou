@@ -1,14 +1,8 @@
-import React, {
-  ClipboardEvent,
-  useCallback,
-  useMemo,
-  useState,
-  useEffect,
-} from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { FileRejection, useDropzone } from 'react-dropzone';
 import { useHistory } from 'react-router-dom';
 import upload from '../../service/upload';
-import ProgressBar from '../progress-bar/progress-bar';
+// import ProgressBar from '../progress-bar/progress-bar';
 import './upload-zone.css';
 
 const activeStyle = {
@@ -23,25 +17,26 @@ export default () => {
   const history = useHistory();
   const [uploading, setUploading] = useState(false);
   const onDrop = useCallback(
-    (acceptedFiles: File[], fileRejections: FileRejection[]) => {
+    async (acceptedFiles: File[], fileRejections: FileRejection[]) => {
       if (fileRejections.length > 0) {
         return;
-      }
-      setUploading(true);
-      acceptedFiles.forEach(async (file: File) => {
+      } else if (acceptedFiles.length > 5) {
+        alert('Max file count is 5!');
+      } else {
+        setUploading(true);
         try {
-          const response = await upload(file);
+          const response = await upload(acceptedFiles);
           const result = await response.json();
           setUploading(false);
           history.push({
             pathname: '/preview',
-            state: { imageURL: result.url },
+            state: { images: result.images },
           });
         } catch (error) {
           setUploading(false);
           console.log(error);
         }
-      });
+      }
     },
     []
   );
@@ -54,7 +49,6 @@ export default () => {
   } = useDropzone({
     accept: ['image/gif', 'image/jpeg', 'image/png', 'image/tiff'],
     maxSize: 5 * 1024 * 1024, // 5 MB
-    multiple: false,
     noClick: true,
     noKeyboard: true,
     onDrop: onDrop,
@@ -68,9 +62,7 @@ export default () => {
   );
 
   return (
-    <div
-      className='flex flex-col items-center pb-4 w-3/4 md:w-1/2 lg:w-1/3'
-    >
+    <div className='flex flex-col items-center pb-4 w-3/4 md:w-1/2 lg:w-1/3'>
       {!uploading && (
         <>
           <div
@@ -97,7 +89,7 @@ export default () => {
           <small className='mt-4 text-center'>
             Accept jpg, png, gif and tiff
             <br />
-            File must be smaller than 5MB
+            5MB per image | 5 files per upload
           </small>
         </>
       )}

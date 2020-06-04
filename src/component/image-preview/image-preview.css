@@ -1,0 +1,12 @@
+.selected-image-container {
+  background: #1e1e1e;
+  height: 65vh;
+  & > img {
+    height: 100%;
+  }
+}
+
+.thumbnail {
+  max-height: 3rem;
+  max-width: 3rem;
+}
