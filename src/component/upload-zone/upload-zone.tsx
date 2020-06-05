@@ -47,7 +47,13 @@ export default () => {
     isDragReject,
     open,
   } = useDropzone({
-    accept: ['image/gif', 'image/jpeg', 'image/png', 'image/tiff'],
+    accept: [
+      'image/bmp',
+      'image/gif',
+      'image/jpeg',
+      'image/png',
+      'image/x-icon',
+    ],
     maxSize: 5 * 1024 * 1024, // 5 MB
     noClick: true,
     noKeyboard: true,
@@ -87,7 +93,7 @@ export default () => {
             Choose image here
           </p>
           <small className='mt-4 text-center'>
-            Accept jpg, png, gif and tiff
+            Accept bmp, gif, jpg, png and ico
             <br />
             5MB per image | 5 files per upload
           </small>
