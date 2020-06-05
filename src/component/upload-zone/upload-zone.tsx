@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { FileRejection, useDropzone } from 'react-dropzone';
+import { useAlert } from 'react-alert';
+import { FileError, FileRejection, useDropzone } from 'react-dropzone';
 import { useHistory } from 'react-router-dom';
 import upload from '../../service/upload';
 // import ProgressBar from '../progress-bar/progress-bar';
@@ -16,12 +17,25 @@ const rejectStyle = {
 export default () => {
   const history = useHistory();
   const [uploading, setUploading] = useState(false);
+  const alert = useAlert();
   const onDrop = useCallback(
     async (acceptedFiles: File[], fileRejections: FileRejection[]) => {
       if (fileRejections.length > 0) {
+        fileRejections.forEach((rejection: FileRejection) => {
+          alert.error(
+            <>
+              <p>{rejection.file.name}</p>
+              <ul className='list-disc list-inside'>
+                {rejection.errors.map((error: FileError, key: number) => (
+                  <li key={key}>{error.message}</li>
+                ))}
+              </ul>
+            </>
+          );
+        });
         return;
       } else if (acceptedFiles.length > 5) {
-        alert('Max file count is 5!');
+        alert.error('Max file count is 5!');
       } else {
         setUploading(true);
         try {
@@ -54,7 +68,7 @@ export default () => {
       'image/png',
       'image/x-icon',
     ],
-    maxSize: 5 * 1024 * 1024, // 5 MB
+    maxSize: 2 * 1024 * 1024, // 5 MB
     noClick: true,
     noKeyboard: true,
     onDrop: onDrop,

@@ -5,8 +5,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gold: '#FFD700',
+        gold: '#ffd700',
         lightgrey: '#d3d3d3',
+        secondary: '#1e1e1e'
       },
       fontSize: {
         '9xl': '7rem',
