@@ -21,7 +21,6 @@ export default () => {
       history.replace('/');
     }
   }, []);
-  console.log(location);
   return (
     <main className='flex flex-col items-start justify-center py-8 lg:flex-row'>
       {location.state && location.state.images && (
