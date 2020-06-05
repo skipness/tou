@@ -6,7 +6,7 @@ import {
   transitions,
 } from 'react-alert';
 import { render } from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import Alert from './component/alert/alert';
 import './index.css';
 import Home from './page/home/home';
@@ -27,10 +27,12 @@ render(
           <Switch>
             <>
               <nav className='flex h-24 items-center'>
-                <div className='title select-none text-6xl'>
-                  <span className='text-gold'>T</span>ou
-                  <sup className='text-4xl'>4</sup>
-                </div>
+                <Link to='/' replace>
+                  <div className='title select-none text-6xl'>
+                    <span className='text-gold'>T</span>ou
+                    <sup className='text-4xl'>4</sup>
+                  </div>
+                </Link>
               </nav>
               <Route component={Preview} exact path='/preview' />
             </>
