@@ -68,7 +68,7 @@ export default () => {
       'image/png',
       'image/x-icon',
     ],
-    maxSize: 2 * 1024 * 1024, // 5 MB
+    maxSize: 5 * 1024 * 1024, // 5 MB
     noClick: true,
     noKeyboard: true,
     onDrop: onDrop,
