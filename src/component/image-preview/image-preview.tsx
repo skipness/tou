@@ -12,7 +12,7 @@ export default ({ images }: ImagePreviewProps) => {
     setSelectedIndex(index);
   };
   return (
-    <div className='flex flex-col lg:w-4/12'>
+    <div className='flex flex-col self-stretch lg:w-4/12'>
       <div className='rounded selected-image-container'>
         <img
           className='object-contain mx-auto'
