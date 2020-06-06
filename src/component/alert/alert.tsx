@@ -1,16 +1,25 @@
 import React from 'react';
 import { AlertComponentPropsWithStyle } from 'react-alert';
 
-export default ({ message }: AlertComponentPropsWithStyle) => {
+export default ({
+  message,
+  options: { type },
+  style,
+}: AlertComponentPropsWithStyle) => {
   return (
     <div
-      className='bg-secondary border-t-4 border-red-700 my-2 px-4 py-3 rounded-b text-lightgrey shadow-lg'
+      className={`bg-secondary border-t-4 ${
+        type === 'error' ? 'border-red-700' : 'border-gold'
+      } my-2 px-4 py-3 rounded-b text-lightgrey shadow-lg w-40`}
       role='alert'
+      style={{ ...style, minHeight: '5vh', maxWidth: '90vw', width: '30rem' }}
     >
-      <div className='flex'>
+      <div className='flex items-center'>
         <div className='py-1'>
           <svg
-            className='fill-current h-6 w-6 text-red-700 mr-4'
+            className={`fill-current h-6 w-6 ${
+              type === 'error' ? 'text-red-700' : 'text-gold'
+            } mr-4`}
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 20 20'
           >
