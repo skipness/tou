@@ -14,7 +14,8 @@ import Preview from './page/preview/preview';
 import Provider from './store/provider';
 
 const alertOptions: Partial<AlertProviderProps> = {
-  position: positions.TOP_RIGHT,
+  offset: '1rem',
+  position: positions.BOTTOM_CENTER,
   timeout: 5000,
   transition: transitions.FADE,
 };
