@@ -29,7 +29,7 @@ export default () => {
     }
   }, []);
   return (
-    <main className='flex flex-col items-start justify-center py-8 lg:flex-row'>
+    <main className='flex flex-col items-start justify-center lg:py-8 lg:flex-row'>
       {location.state && location.state.images && (
         <>
           <div className='h-12 hidden lg:block lg:w-1/12'>
@@ -44,7 +44,7 @@ export default () => {
             />
           </div>
           <ImagePreview images={location.state.images} />
-          <div className='flex flex-col w-full mt-8 lg:ml-16 lg:mt-0 lg:w-4/12'>
+          <div className='flex flex-col w-full mt-8 lg:ml-8 lg:mt-0 lg:w-4/12'>
             <CodeContainer
               images={location.state.images}
               title='Direct Link'
