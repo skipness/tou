@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import Context from '../../store/context/context';
 import './image-preview.css';
 
 type ImagePreviewProps = {
@@ -6,10 +7,15 @@ type ImagePreviewProps = {
 };
 
 export default ({ images }: ImagePreviewProps) => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const {
+    state: {
+      imagePreview: { selectedIndex },
+    },
+    dispatch,
+  } = useContext(Context);
   const onThumbnailClick = (index: number) => {
     if (index === selectedIndex) return;
-    setSelectedIndex(index);
+    dispatch({ type: 'CHANGE_SELECTED_INDEX', payload: index });
   };
   return (
     <div className='flex flex-col self-stretch lg:w-7/12'>

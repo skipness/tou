@@ -1,10 +1,12 @@
 import { faImage } from '@fortawesome/free-regular-svg-icons/faImage';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import CodeContainer from '../../component/code-container/code-container';
 import ImagePreview from '../../component/image-preview/image-preview';
+import ShareButtonGroup from '../../component/share-button-group/share-button-group';
+import Context from '../../store/context/context';
 
 type LocationState = {
   images: any[] | undefined;
@@ -14,6 +16,11 @@ const direct = '%s';
 const bbcode = '[img]%s[/img]';
 
 export default () => {
+  const {
+    state: {
+      imagePreview: { selectedIndex },
+    },
+  } = useContext(Context);
   const history = useHistory();
   const location = useLocation<LocationState>();
   useEffect(() => {
@@ -61,6 +68,7 @@ export default () => {
               />
               Upload another image
             </p>
+            <ShareButtonGroup url={location.state.images[selectedIndex].url} />
           </div>
         </>
       )}
