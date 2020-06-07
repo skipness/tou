@@ -14,7 +14,7 @@ type ShareButtonGroupProps = {
 export default ({ url }: ShareButtonGroupProps) => {
   const alert = useAlert();
   return (
-    <div className='flex justify-around'>
+    <div className='flex justify-around my-4'>
       <FontAwesomeIcon
         className='cursor-pointer hover:text-white'
         color='lightgrey'
