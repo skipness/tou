@@ -20,6 +20,7 @@ export default () => {
     state: {
       imagePreview: { selectedIndex },
     },
+    dispatch,
   } = useContext(Context);
   const history = useHistory();
   const location = useLocation<LocationState>();
@@ -27,6 +28,7 @@ export default () => {
     if (location.state === undefined) {
       history.replace('/');
     }
+    return () => dispatch({ type: 'CHANGE_SELECTED_INDEX', payload: 0 });
   }, []);
   return (
     <main className='flex flex-col items-start justify-center lg:py-8 lg:flex-row'>
@@ -44,7 +46,7 @@ export default () => {
             />
           </div>
           <ImagePreview images={location.state.images} />
-          <div className='flex flex-col w-full mt-8 lg:ml-8 lg:mt-0 lg:w-4/12'>
+          <div className='flex flex-col w-full my-8 lg:ml-8 lg:mt-0 lg:w-4/12'>
             <CodeContainer
               images={location.state.images}
               title='Direct Link'
