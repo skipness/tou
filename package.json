@@ -1,7 +1,7 @@
 {
   "name": "tou",
   "version": "1.0.0",
-  "description": "Front end of a free, simple image hosting service",
+  "description": "Frontend of a free, simple image hosting service",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
