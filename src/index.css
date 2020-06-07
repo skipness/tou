@@ -1,13 +1,14 @@
 @import 'tailwindcss/base';
 
-html {
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
 body {
-  @apply bg-black m-0 select-none;
+  font-family: 'Source Sans Pro', sans-serif;
+  @apply bg-black h-full m-0 select-none;
+  &:before {
+    content: '';
+    @apply absolute inset-0;
+  }
   & > #root {
-    @apply flex flex-col h-screen justify-center text-lightgrey;
+    @apply h-full max-h-full relative text-lightgrey;
   }
 }
 

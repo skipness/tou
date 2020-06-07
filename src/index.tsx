@@ -22,7 +22,7 @@ const alertOptions: Partial<AlertProviderProps> = {
 
 render(
   <Provider>
-    <div className='container h-screen mx-auto pb-6 px-6'>
+    <div className='container mx-auto pb-6 px-6'>
       <BrowserRouter>
         <AlertProvider template={Alert} {...alertOptions}>
           <Switch>
