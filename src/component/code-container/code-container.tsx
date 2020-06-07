@@ -2,6 +2,7 @@ import { faCopy } from '@fortawesome/free-regular-svg-icons/faCopy';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { createRef } from 'react';
 import util from 'util';
+import { useAlert } from 'react-alert';
 import './code-container.css';
 
 type CodeContainerProps = {
@@ -12,6 +13,7 @@ type CodeContainerProps = {
 
 export default ({ title, images, type }: CodeContainerProps) => {
   const textareaRef = createRef<HTMLTextAreaElement>();
+  const alert = useAlert();
   const value = images.map((image) => util.format(type, image.url)).join('\n');
   return (
     <div className='flex flex-col mb-8'>
@@ -26,7 +28,11 @@ export default ({ title, images, type }: CodeContainerProps) => {
               textareaRef.current.select();
               document.execCommand('copy');
               textareaRef.current.setSelectionRange(0, 0);
-              alert('Copied');
+              alert.info(
+                <p>
+                  Copied {images.length} image{images.length > 1 ? 's' : ''}
+                </p>
+              );
             }
           }}
           size='lg'
