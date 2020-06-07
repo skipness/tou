@@ -8,6 +8,6 @@
     "sourceMap": false,
     "jsx": "react"
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "webpack"],
   "exclude": ["node_modules"]
 }
