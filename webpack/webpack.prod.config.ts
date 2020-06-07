@@ -54,8 +54,12 @@ const prodConfig: Configuration = merge(baseConfig, {
       chunks: 'all',
       cacheGroups: {
         react: {
-          test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/,
           name: 'react',
+          test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/,
+        },
+        'font-awesome': {
+          name: 'font-awesome',
+          test: /[\\/]node_modules[\\/]@fortawesome[\\/]/,
         },
       },
     },
