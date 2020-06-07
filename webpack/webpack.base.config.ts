@@ -4,19 +4,19 @@ import { Configuration, DefinePlugin } from 'webpack';
 import resolve from './util';
 
 const baseConfig: Configuration = {
-  entry: resolve('index.tsx'),
+  entry: resolve('src/index.tsx'),
   output: {
     filename: `assets/js/bundle.${
       process.env.NODE_ENV === 'development' ? '' : '[contenthash]'
     }.js`,
-    path: resolve('../dist'),
+    path: resolve('dist'),
     publicPath: 'https://tou.im/',
   },
   module: {
     rules: [
       {
         test: /\.ts(x?)$/,
-        include: resolve('../src'),
+        include: resolve('src'),
         exclude: /node-modules/,
         use: {
           loader: 'babel-loader',
@@ -32,15 +32,12 @@ const baseConfig: Configuration = {
     ],
   },
   resolve: {
-    alias: {
-      '@': resolve('..'),
-    },
     extensions: ['.js', '.ts', '.tsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: resolve('template/index.html'),
+      template: resolve('src/template/index.html'),
     }),
     new DefinePlugin({
       'process.env': JSON.stringify({

@@ -12,7 +12,7 @@ const prodConfig: Configuration = merge(baseConfig, {
     rules: [
       {
         test: /\.css$/,
-        include: resolve('../src'),
+        include: resolve('src'),
         exclude: /node-modules/,
         use: [
           'style-loader',
