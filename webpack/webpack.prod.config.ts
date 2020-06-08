@@ -8,6 +8,9 @@ import baseConfig from './webpack.base.config';
 
 const prodConfig: Configuration = merge(baseConfig, {
   mode: 'production',
+  output: {
+    publicPath: 'https://tou.im/',
+  },
   module: {
     rules: [
       {

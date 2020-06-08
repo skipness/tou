@@ -10,7 +10,6 @@ const baseConfig: Configuration = {
       process.env.NODE_ENV === 'development' ? '' : '[contenthash]'
     }.js`,
     path: resolve('dist'),
-    publicPath: 'https://tou.im/',
   },
   module: {
     rules: [
