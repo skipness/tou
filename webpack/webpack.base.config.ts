@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import FaviconWebpackPlugin from 'favicons-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { Configuration, DefinePlugin } from 'webpack';
 import resolve from './util';
@@ -37,6 +38,24 @@ const baseConfig: Configuration = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: resolve('src/template/index.html'),
+    }),
+    new FaviconWebpackPlugin({
+      favicons: {
+        appName: 'tou.im',
+        appDescription: 'Simple image hosting service',
+        background: '#000000',
+        icons: {
+          appleStartup: false,
+          coast: false,
+          windows: false,
+          yandex: false,
+        },
+        theme_color: '#ffd700',
+        start_url: '/',
+      },
+      logo: resolve('src/template/favico.png'),
+      outputPath: 'assets/image/ico/',
+      prefix: 'assets/image/ico/',
     }),
     new DefinePlugin({
       'process.env': JSON.stringify({
