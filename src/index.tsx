@@ -9,6 +9,7 @@ import { render } from 'react-dom';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import Alert from './component/alert/alert';
 import './index.css';
+import NotFound from './page/404/404';
 import Home from './page/home/home';
 import Preview from './page/preview/preview';
 import Provider from './store/provider';
@@ -38,6 +39,7 @@ render(
                   </Link>
                 </nav>
                 <Route component={Preview} exact path='/preview' />
+                <Route component={NotFound} />
               </>
             </Switch>
           </Switch>
