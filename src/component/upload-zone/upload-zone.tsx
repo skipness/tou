@@ -88,7 +88,7 @@ export default () => {
           <div
             {...getRootProps({
               className:
-                'dropzone bg-black border-lightgrey border-dashed duration-300 ease-in-out flex flex-col items-center outline-none px-4 py-3 rounded transition-colors w-full md:py-5',
+                'dropzone bg-black border-lightgrey border-dashed duration-300 ease-in-out flex flex-col items-center outline-none px-4 py-6 rounded transition-colors w-full',
               style: style,
             })}
           >
