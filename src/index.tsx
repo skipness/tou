@@ -29,13 +29,13 @@ render(
         <AlertProvider template={Alert} {...alertOptions}>
           <Switch>
             <Route component={Home} exact path='/' />
-            <Switch>
-              <>
-                <NavBar />
+            <>
+              <NavBar />
+              <Switch>
                 <Route component={Preview} exact path='/preview' />
                 <Route component={NotFound} />
-              </>
-            </Switch>
+              </Switch>
+            </>
           </Switch>
         </AlertProvider>
       </BrowserRouter>
