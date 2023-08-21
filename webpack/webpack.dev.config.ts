@@ -6,10 +6,11 @@ import baseConfig from './webpack.base.config';
 const devConfig: Configuration = merge(baseConfig, {
   mode: 'development',
   devtool: 'inline-source-map',
+  // @ts-ignore
   devServer: {
     historyApiFallback: true,
     port: 8888,
-    open: true,
+    open: true
   },
   module: {
     rules: [

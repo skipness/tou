@@ -7,9 +7,8 @@ import resolve from './util';
 const baseConfig: Configuration = {
   entry: resolve('src/index.tsx'),
   output: {
-    filename: `assets/js/bundle.${
-      process.env.NODE_ENV === 'development' ? '' : '[contenthash]'
-    }.js`,
+    filename: `assets/js/bundle.${process.env.NODE_ENV === 'development' ? '' : '[contenthash]'
+      }.js`,
     path: resolve('dist'),
   },
   module: {
@@ -33,6 +32,7 @@ const baseConfig: Configuration = {
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
+    fallback: { util: false }
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -45,8 +45,10 @@ const baseConfig: Configuration = {
         appDescription: 'Simple image hosting service',
         background: '#000000',
         icons: {
+          android: false,
+          appleIcon: false,
           appleStartup: false,
-          coast: false,
+          favicons: false,
           windows: false,
           yandex: false,
         },
