@@ -19,7 +19,12 @@ const prodConfig: Configuration = merge(baseConfig, {
         exclude: /node-modules/,
         use: [
           'style-loader',
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: false,
+            },
+          },
           {
             loader: 'css-loader',
             options: {
