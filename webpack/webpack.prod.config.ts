@@ -1,7 +1,6 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { Configuration } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import WebpackCleanupPlugin from 'webpack-cleanup-plugin';
 import merge from 'webpack-merge';
 import resolve from './util';
 import baseConfig from './webpack.base.config';
@@ -10,6 +9,7 @@ const prodConfig: Configuration = merge(baseConfig, {
   mode: 'production',
   output: {
     publicPath: 'https://tou.im/',
+    clean: true,
   },
   module: {
     rules: [
@@ -71,7 +71,6 @@ const prodConfig: Configuration = merge(baseConfig, {
     new MiniCssExtractPlugin({
       chunkFilename: 'assets/style/bundle.[contenthash].css',
     }),
-    new WebpackCleanupPlugin(),
     // new BundleAnalyzerPlugin(),
   ],
 });
