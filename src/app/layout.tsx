@@ -6,8 +6,24 @@ import { Monoton } from 'next/font/google';
 const monoton = Monoton({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://tou.im'),
   title: 'tou',
   description: 'A free, simple image hosting service',
+  openGraph: {
+    title: 'tou.im',
+    description: 'A free, simple image hosting service',
+    url: 'https://tou.im',
+    siteName: 'tou.im',
+    images: [
+      {
+        url: '/banner.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
