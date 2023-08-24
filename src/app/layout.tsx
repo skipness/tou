@@ -1,22 +1,27 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import '@uploadthing/react/styles.css';
+import './globals.css';
+import type { Metadata } from 'next';
+import { Monoton } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] })
+const monoton = Monoton({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
   title: 'tou',
-  description: 'A free, simple image hosting servic',
-}
+  description: 'A free, simple image hosting service',
+};
 
-export default ({
-  children,
-}: {
-  children: React.ReactNode
-}) => {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang='en'>
+      <body className='h-screen text-white bg-gradient-to-b from-zinc-900 via-gray-900 to-stone-950'>
+        <div
+          className={`${monoton.className} select-none text-9xl text-center`}
+        >
+          <span className='text-gold'>T</span>ou
+          <sup className='text-7xl'>4</sup>
+        </div>
+        {children}
+      </body>
     </html>
-  )
+  );
 }
