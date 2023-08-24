@@ -1,14 +1,32 @@
-import UploadZone from '@/components/upload-zone/upload-zone'
-import { Monoton } from 'next/font/google'
+'use client';
 
-const monoton = Monoton({ subsets: ["latin"], weight: "400" })
+import ImagePreview from '@/components/image-preview';
+import { UploadDropzone } from '@uploadthing/react';
+import { useState } from 'react';
+import type { TouFileRouter } from './api/uploadthing/core';
 
-export default () => {
-  return (<main className='flex flex-col h-full items-center justify-start'>
-    <div className={`${monoton.className} select-none mt-16 text-9xl text-center md:text-14xl `}>
-      <span className='text-gold'>T</span>ou
-      <sup className='text-6xl md:text-9xl'>4</sup>
-    </div>
-    <UploadZone />
-  </main>)
+export default function Home() {
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const reset = () => setImageUrls([]);
+
+  return (
+    <main className='flex flex-col items-center justify-start'>
+      {imageUrls.length > 0 ? (
+        <ImagePreview imageUrls={imageUrls} reset={reset} />
+      ) : (
+        <UploadDropzone<TouFileRouter>
+          className='border-2 border-lightgrey border-dashed ut-label:text-gray-50'
+          endpoint='imageUploader'
+          onClientUploadComplete={(res) => {
+            if (res) {
+              setImageUrls(res.map((file) => file.url));
+            }
+          }}
+          onUploadError={(error: Error) => {
+            alert(`ERROR! ${error.message}`);
+          }}
+        />
+      )}
+    </main>
+  );
 }
